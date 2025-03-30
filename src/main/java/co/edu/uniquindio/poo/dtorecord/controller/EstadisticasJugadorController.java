@@ -1,7 +1,12 @@
 package co.edu.uniquindio.poo.dtorecord.controller;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.poo.dtorecord.model.Equipo;
+import co.edu.uniquindio.poo.dtorecord.model.Grupo;
+import co.edu.uniquindio.poo.dtorecord.model.Jugador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -66,6 +71,8 @@ public class EstadisticasJugadorController {
 
     @FXML
     void initialize() {
+
+
         assert actualizarBoton != null : "fx:id=\"actualizarBoton\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
         assert atrasBoton != null : "fx:id=\"atrasBoton\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
         assert colAmarillas != null : "fx:id=\"colAmarillas\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
