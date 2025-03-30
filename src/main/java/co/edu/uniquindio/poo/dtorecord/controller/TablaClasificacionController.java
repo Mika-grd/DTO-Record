@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.poo.dtorecord.HelloApplication;
+import co.edu.uniquindio.poo.dtorecord.model.Grupo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class TablaClasificacionController {
     @FXML
     void actualizarTabla(ActionEvent event) {
         // Obtener la lista de equipos
-        List<Equipo> listaEquipos = Main.obtenerEquipos(); // Ajusta según cómo obtienes los equipos
+        List<Equipo> listaEquipos = Grupo.getInstance().getListaEquipos(); // Ajusta según cómo obtienes los equipos
 
         if (listaEquipos != null && !listaEquipos.isEmpty()) {
             // Generar la tabla de clasificación
