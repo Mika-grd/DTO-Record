@@ -26,6 +26,7 @@
                 <TableColumn fx:id="colPuntos" prefWidth="150.0" text="Puntos" />
             </columns>
         </TableView>
-        <Button fx:id="btnRegresar" layoutX="325.0" layoutY="470.0" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" text="Regresar" onAction="#volverAlMenu"/>
+        <Button fx:id="btnRegresar" layoutX="250.0" layoutY="470.0" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" text="Regresar" onAction="#volverAlMenu"/>
+        <Button fx:id="btnActualizar" layoutX="425.0" layoutY="470.0" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px;" text="Actualizar" onAction="#actualizarTabla"/>
     </children>
 </AnchorPane>

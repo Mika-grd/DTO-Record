@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -19,20 +18,21 @@
                         <Font name="Bodoni MT" size="30.0" />
                     </font>
                 </Text>
-                <ComboBox fx:id="comboEquipos" promptText="Seleccionar equipo" prefWidth="250.0" />
+                <ComboBox fx:id="comboEquipos" prefWidth="250.0" promptText="Seleccionar equipo" />
             </children>
         </VBox>
-        <TableView fx:id="tablaEstadisticas" layoutX="100.0" layoutY="180.0" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: rgba(208, 208, 208, 0.9);">
+        <TableView fx:id="tablaEstadisticas" layoutX="73.0" layoutY="180.0" prefHeight="300.0" prefWidth="627.0" style="-fx-background-color: rgba(208, 208, 208, 0.9);">
             <columns>
-                <TableColumn fx:id="colPartidosJugados" text="Partidos Jugados" prefWidth="100.0" />
-                <TableColumn fx:id="colPartidosGanados" text="Ganados" prefWidth="80.0" />
-                <TableColumn fx:id="colPartidosEmpatados" text="Empatados" prefWidth="80.0" />
-                <TableColumn fx:id="colPartidosPerdidos" text="Perdidos" prefWidth="80.0" />
-                <TableColumn fx:id="colGolesAFavor" text="Goles a Favor" prefWidth="100.0" />
-                <TableColumn fx:id="colGolesEnContra" text="Goles en Contra" prefWidth="100.0" />
-                <TableColumn fx:id="colPuntos" text="Puntos" prefWidth="60.0" />
+                <TableColumn fx:id="colPartidosJugados" prefWidth="106.39999389648438" text="Partidos Jugados" />
+                <TableColumn fx:id="colPartidosGanados" prefWidth="73.5999755859375" text="Ganados" />
+                <TableColumn fx:id="colPartidosEmpatados" prefWidth="80.0" text="Empatados" />
+                <TableColumn fx:id="colPartidosPerdidos" prefWidth="80.0" text="Perdidos" />
+                <TableColumn fx:id="colGolesAFavor" prefWidth="100.0" text="Goles a Favor" />
+                <TableColumn fx:id="colGolesEnContra" prefWidth="100.0" text="Goles en Contra" />
+                <TableColumn fx:id="colPuntos" prefWidth="84.0" text="Puntos" />
             </columns>
         </TableView>
-        <Button fx:id="btnRegresar" layoutX="325.0" layoutY="500.0" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" text="Regresar" onAction="#volverAlMenu"/>
+        <Button fx:id="btnRegresar" layoutX="325.0" layoutY="500.0" onAction="#volverAlMenu" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;" text="Regresar" />
+        <Button fx:id="btnActualizar" layoutX="500.0" layoutY="500.0" onAction="#actualizarTabla" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 16px;" text="Actualizar" />
     </children>
 </AnchorPane>
