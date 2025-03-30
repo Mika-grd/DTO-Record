@@ -11,9 +11,10 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Principal.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
@@ -22,11 +23,14 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-
         //Creación de equipos:
 
         Grupo grupoA = Grupo.getInsance();
         LinkedList<Equipo> listaEquipos = grupoA.getListaEquipos();
+
+        if (listaEquipos == null) {
+            listaEquipos = new LinkedList<>();
+        }
 
         Equipo barcelona = new Equipo(new REquipo(1, "FC Barcelona", "Joan Laporta"), "España",
                 new LinkedList<>(), new LinkedList<>(), 0, 0, 0, 0, 0, 0, 0);
