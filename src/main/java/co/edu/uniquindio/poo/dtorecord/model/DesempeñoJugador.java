@@ -3,7 +3,7 @@ package co.edu.uniquindio.poo.dtorecord.model;
 record DesempeñoJugador(
         int idJugador,
         String nombre,
-        String equipo,
+        Equipo equipo,
         int partidosJugados,
         int goles,
         int asistencias,
@@ -15,7 +15,7 @@ record DesempeñoJugador(
         this(
                 jugador.getRjugador().idJugador(),
                 jugador.getRjugador().nombre(),
-                jugador.getEquipo().getEquipo().nombre(),
+                jugador.getEquipo(),
                 jugador.getEquipo().getPartidosJugados(),
                 jugador.getGoles(),
                 jugador.getAsistencias(),

@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public record Partido(
 int idPartido,
 LocalDate fecha,
-Equipo idEquipoLocal,
-Equipo idEquipoVisitante,
+Equipo equipoLocal,
+Equipo equipoVisitante,
 int golesLocal,
 int golesVisitante
 ) {
