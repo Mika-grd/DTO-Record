@@ -36,6 +36,7 @@ public class Equipo {
         return equipo;
     }
 
+
     public void setEquipo(REquipo equipo) {
         this.equipo = equipo;
     }
