@@ -62,6 +62,7 @@ public class EstadisticasEquipoController {
     private ObservableList<Equipo> listaEquipos;
     private ObservableList<DesempeñoEquipo> listaEstadisticas;
 
+    //Action para el boton de actualizar
     @FXML
     void actualizarTabla(ActionEvent event) {
         Equipo equipoSeleccionado = comboEquipos.getValue();
@@ -70,12 +71,14 @@ public class EstadisticasEquipoController {
         }
     }
 
+    //Action para el boton de regresar
     @FXML
     void volverAlMenu(ActionEvent event) {
         Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageActual.close();
     }
 
+    // Inicializa los componentes de la vista
     @FXML
     void initialize() {
         assert btnActualizar != null : "fx:id=\"btnActualizar\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";

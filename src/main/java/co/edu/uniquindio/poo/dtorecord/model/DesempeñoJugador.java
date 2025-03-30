@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.dtorecord.model;
 
-record DesempeñoJugador(
+public record DesempeñoJugador(
         int idJugador,
         String nombre,
         Equipo equipo,
@@ -11,7 +11,8 @@ record DesempeñoJugador(
         int tarjetasAmarillas,
         int tarjetasRojas
 ) {
-    public DesempeñoJugador(Jugador jugador, Equipo equipo) {
+    // Constructor que recibe un objeto Jugador
+    public DesempeñoJugador(Jugador jugador) {
         this(
                 jugador.getRjugador().idJugador(),
                 jugador.getRjugador().nombre(),
