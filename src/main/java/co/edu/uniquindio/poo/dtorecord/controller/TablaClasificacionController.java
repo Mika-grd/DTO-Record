@@ -11,18 +11,7 @@ import java.util.ResourceBundle;
 
 public class TablaClasificacionController {
 
-    package controllers;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
-    public class ClasificacionController {
-
+    
         @FXML
         private ResourceBundle resources;
 
@@ -57,4 +46,4 @@ import javafx.scene.control.TableView;
 
     }
 
-}
+
