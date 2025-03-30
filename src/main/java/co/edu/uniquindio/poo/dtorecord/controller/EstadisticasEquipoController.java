@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.dtorecord.controller;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.poo.dtorecord.model.DesempeñoEquipo;
@@ -93,7 +94,7 @@ public class EstadisticasEquipoController {
         assert comboEquipos != null : "fx:id=\"comboEquipos\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
         assert tablaEstadisticas != null : "fx:id=\"tablaEstadisticas\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
 
-        listaEquipos = FXCollections.observableArrayList(Grupo.getInsance().getListaEquipos());
+        
 
         comboEquipos.setItems(listaEquipos);
 
