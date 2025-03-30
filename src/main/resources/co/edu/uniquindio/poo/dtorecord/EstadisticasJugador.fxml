@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="847.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.dtorecord.controller.EstadisticasJugadorController">
+    <children>
+        <VBox layoutX="24.0" layoutY="40.0" prefHeight="120.0" prefWidth="287.0" spacing="15.0">
+            <children>
+                <Text fill="WHITE" text="Estadísticas de Jugadores" wrappingWidth="264.28594970703125">
+                    <font>
+                        <Font name="Algerian" size="30.0" />
+                    </font>
+                </Text>
+                <ComboBox fx:id="comboEquipo" prefWidth="250.0" promptText="Seleccionar equipo" />
+            <ComboBox fx:id="comboJugador" prefWidth="250.0" promptText="Seleccionar Jugador" />
+            </children>
+        </VBox>
+        <TableView fx:id="tablaEstadisticas" layoutX="206.0" layoutY="225.0" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: rgba(208, 208, 208, 0.9);">
+            <columns>
+                <TableColumn fx:id="colGoles" prefWidth="94.40003967285156" text="Goles" />
+                <TableColumn fx:id="colAsistencias" prefWidth="85.5999755859375" text="Asistencias" />
+                <TableColumn fx:id="colMinutosJugados" prefWidth="112.0" text="Minutos Jugados" />
+                <TableColumn fx:id="colAmarillas" prefWidth="68.0" text="Amarillas" />
+                <TableColumn fx:id="colRojas" prefWidth="100.0" text="Rojas" />
+                <TableColumn fx:id="colCalificacionPromedio" prefWidth="138.39996337890625" text="Calificación Promedio" />
+            </columns>
+        </TableView>
+        <Button fx:id="atrasBoton" layoutX="41.0" layoutY="562.0" onAction="#atrasAccion" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 16px;" text="Atras" />
+      <Button fx:id="actualizarBoton" layoutX="221.0" layoutY="562.0" onAction="#actualizarAccion" prefHeight="37.0" prefWidth="150.0" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-size: 16px;" text="Actualizar" />
+    </children>
+</AnchorPane>
