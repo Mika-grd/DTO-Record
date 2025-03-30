@@ -18,6 +18,23 @@ public class Equipo {
     int golesEnContra;
     int puntos;
 
+    // 🎯 Metodo para registrar un partido jugado y actualizar estadísticas
+    public void registrarPartido(int golesAnotados, int golesRecibidos) {
+        this.partidosJugados++;
+        this.golesAFavor += golesAnotados;
+        this.golesEnContra += golesRecibidos;
+
+        if (golesAnotados > golesRecibidos) {
+            this.partidosGanados++;
+            this.puntos += 3;  // Victoria suma 3 puntos
+        } else if (golesAnotados == golesRecibidos) {
+            this.partidosEmpatados++;
+            this.puntos += 1;  // Empate suma 1 punto
+        } else {
+            this.partidosPerdidos++;
+        }
+    }
+
     public Equipo(REquipo equipo, String pais, LinkedList<Jugador> listaJugadores, LinkedList<Partido> listaPartidos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesAFavor, int golesEnContra, int puntos) {
         this.equipo = equipo;
         this.pais = pais;
