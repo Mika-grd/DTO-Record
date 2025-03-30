@@ -4,10 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 public class EstadisticasJugadorController {
 
@@ -57,7 +59,9 @@ public class EstadisticasJugadorController {
 
     @FXML
     void atrasAccion(ActionEvent event) {
-
+        // Obtener la ventana actual (Pantalla de estadisticas jugador) y cerrarla
+        Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stageActual.close();
     }
 
     @FXML
