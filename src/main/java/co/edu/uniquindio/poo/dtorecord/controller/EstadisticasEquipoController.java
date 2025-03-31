@@ -7,17 +7,16 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.poo.dtorecord.model.DesempeñoEquipo;
 import co.edu.uniquindio.poo.dtorecord.model.Equipo;
 import co.edu.uniquindio.poo.dtorecord.model.Grupo;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class EstadisticasEquipoController {
 
@@ -34,26 +33,25 @@ public class EstadisticasEquipoController {
     private Button btnRegresar;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colGolesAFavor;
+    private TableColumn<DesempeñoEquipo, Number> colGolesAFavor;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colGolesEnContra;
+    private TableColumn<DesempeñoEquipo, Number> colGolesEnContra;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPartidosEmpatados;
+    private TableColumn<DesempeñoEquipo, Number> colPartidosEmpatados;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPartidosGanados;
+    private TableColumn<DesempeñoEquipo, Number> colPartidosGanados;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPartidosJugados;
+    private TableColumn<DesempeñoEquipo, Number> colPartidosJugados;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPartidosPerdidos;
+    private TableColumn<DesempeñoEquipo, Number> colPartidosPerdidos;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPuntos;
-
+    private TableColumn<DesempeñoEquipo, Number> colPuntos;
     @FXML
     private ComboBox<Equipo> comboEquipos;
 
@@ -95,23 +93,60 @@ public class EstadisticasEquipoController {
         assert comboEquipos != null : "fx:id=\"comboEquipos\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
         assert tablaEstadisticas != null : "fx:id=\"tablaEstadisticas\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
 
-        // Inicializar listas vacías para evitar null
-        listaEquipos = FXCollections.observableArrayList();
-        listaEstadisticas = FXCollections.observableArrayList();
+        // Obtener la lista de equipos desde el singleton Grupo
+        listaEquipos = FXCollections.observableArrayList(Grupo.getInstance().getListaEquipos());
 
-        // Asignar listas a los componentes
+        // Asignar la lista de equipos al ComboBox
         comboEquipos.setItems(listaEquipos);
+        // Configurar cómo se muestra cada equipo en la lista desplegable
+        comboEquipos.setCellFactory(lv -> new ListCell<Equipo>() {
+            @Override
+            protected void updateItem(Equipo equipo, boolean empty) {
+                super.updateItem(equipo, empty);
+                setText((equipo == null || empty) ? "" : equipo.getEquipo().nombre());
+            }
+        });
+
+// Configurar cómo se muestra el equipo seleccionado en el ComboBox
+        comboEquipos.setConverter(new StringConverter<Equipo>() {
+            @Override
+            public String toString(Equipo equipo) {
+                return (equipo != null) ? equipo.getEquipo().nombre() : "";
+            }
+
+            @Override
+            public Equipo fromString(String string) {
+                return null; // No necesitas esta conversión en este caso
+            }
+        });
+
+        // Inicializar la lista de estadísticas
+        listaEstadisticas = FXCollections.observableArrayList();
         tablaEstadisticas.setItems(listaEstadisticas);
 
-
         // Configurar columnas de la tabla
-        colPartidosJugados.setCellValueFactory(new PropertyValueFactory<>("partidosJugados"));
-        colPartidosGanados.setCellValueFactory(new PropertyValueFactory<>("partidosGanados"));
-        colPartidosEmpatados.setCellValueFactory(new PropertyValueFactory<>("partidosEmpatados"));
-        colPartidosPerdidos.setCellValueFactory(new PropertyValueFactory<>("partidosPerdidos"));
-        colGolesAFavor.setCellValueFactory(new PropertyValueFactory<>("golesAFavor"));
-        colGolesEnContra.setCellValueFactory(new PropertyValueFactory<>("golesEnContra"));
-        colPuntos.setCellValueFactory(new PropertyValueFactory<>("puntos"));
+
+        colPartidosJugados.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().partidosJugados())
+        );
+        colPartidosGanados.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().partidosGanados())
+        );
+        colPartidosEmpatados.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().partidosEmpatados())
+        );
+        colPartidosPerdidos.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().partidosPerdidos())
+        );
+        colGolesAFavor.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().golesAFavor())
+        );
+        colGolesEnContra.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().golesEnContra())
+        );
+        colPuntos.setCellValueFactory(cellData ->
+                new ReadOnlyObjectWrapper<>(cellData.getValue().puntos())
+        );
     }
 
     
