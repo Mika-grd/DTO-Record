@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.dtorecord.model;
 
 public record DesempeñoEquipo(
+        // Atributos de la clase DesempeñoEquipo
         int idEquipo,
         String nombre,
         int partidosJugados,
@@ -12,6 +13,7 @@ public record DesempeñoEquipo(
         int diferenciaGoles,
         int puntos
 ) {
+
     // Constructor que recibe un objeto Equipo
     public DesempeñoEquipo(Equipo equipo) {
         this(

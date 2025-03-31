@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.dtorecord.model;
 
 public record DesempeñoJugador(
+        // Atributos de la clase DesempeñoJugador
         int idJugador,
         String nombre,
         Equipo equipo,

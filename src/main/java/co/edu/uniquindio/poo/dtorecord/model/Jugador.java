@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.dtorecord.model;
 
 public class Jugador {
+    // Atributos
     RJugador rjugador;
     int edad;
     String posicion;
@@ -14,6 +15,7 @@ public class Jugador {
     int tarjetasRojas;
     public double calificacionPromedio;
 
+    // Constructor
     public Jugador(RJugador rjugador, int edad, String posicion, Equipo equipo, int goles, int asistencias, int minutosJugados, int tarjetasAmarillas, int tarjetasRojas, float calificacionPromedio) {
         this.rjugador = rjugador;
         this.edad = edad;
@@ -27,6 +29,7 @@ public class Jugador {
         this.calificacionPromedio = calificacionPromedio;
     }
 
+    // Getters y Setters
     public RJugador getRjugador() {
         return rjugador;
     }
@@ -107,6 +110,7 @@ public class Jugador {
         this.calificacionPromedio = calificacionPromedio;
     }
 
+    //ToString
     @Override
     public String toString() {
         return "Jugador{" +

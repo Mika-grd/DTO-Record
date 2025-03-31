@@ -3,7 +3,7 @@ package co.edu.uniquindio.poo.dtorecord.model;
 import java.util.LinkedList;
 
 public class Equipo {
-
+    // Atributos
     REquipo equipo;
     String pais;
     LinkedList<Jugador> listaJugadores;
@@ -18,7 +18,7 @@ public class Equipo {
     int golesEnContra;
     int puntos;
 
-    // 🎯 Metodo para registrar un partido jugado y actualizar estadísticas
+    // Metodo para registrar un partido jugado y actualizar estadísticas
     public void registrarPartido(int golesAnotados, int golesRecibidos) {
         this.partidosJugados++;
         this.golesAFavor += golesAnotados;
@@ -35,6 +35,7 @@ public class Equipo {
         }
     }
 
+    // Constructor
     public Equipo(REquipo equipo, String pais, LinkedList<Jugador> listaJugadores, LinkedList<Partido> listaPartidos, int partidosJugados, int partidosGanados, int partidosEmpatados, int partidosPerdidos, int golesAFavor, int golesEnContra, int puntos) {
         this.equipo = equipo;
         this.pais = pais;
@@ -49,6 +50,7 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    // Getters y Setters
     public REquipo getEquipo() {
         return equipo;
     }
@@ -138,6 +140,7 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    // Metodo toString para mostrar información del equipo
     @Override
     public String toString() {
         return "Equipo{" +

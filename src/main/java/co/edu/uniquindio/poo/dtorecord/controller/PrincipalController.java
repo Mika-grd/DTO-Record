@@ -28,7 +28,7 @@ public class PrincipalController {
     @FXML
     private Button tablaPosicionesBoton;
 
-
+    // Accion del boton de estadisticas de equipos
     @FXML
     void estadisticasEquiposAccion(ActionEvent event) {
         try {
@@ -44,6 +44,7 @@ public class PrincipalController {
         }
     }
 
+    // Accion del boton de estadisticas de jugadores
     @FXML
     void estadisticasJugadoresAccion(ActionEvent event) {
         try {
@@ -59,6 +60,7 @@ public class PrincipalController {
         }
     }
 
+    // Accion del boton de tabla de posiciones
     @FXML
     void tablaPosicionesAccion(ActionEvent event) {
         try {
@@ -75,6 +77,7 @@ public class PrincipalController {
 
     }
 
+    //Inicializador
     @FXML
     void initialize() {
         assert estadisticasEquiposBoton != null : "fx:id=\"estadisticasEquiposBoton\" was not injected: check your FXML file 'Principal.fxml'.";

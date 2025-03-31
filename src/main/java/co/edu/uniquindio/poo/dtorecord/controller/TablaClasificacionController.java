@@ -44,6 +44,7 @@ public class TablaClasificacionController {
 
     private TablaClasificacion tabla; // Se guarda la tabla para acceder a los datos
 
+    //Metodo para actualizar la tabla de clasificacion
     @FXML
     void actualizarTabla(ActionEvent event) {
         // Obtener la lista de equipos
@@ -64,12 +65,14 @@ public class TablaClasificacionController {
         }
     }
 
+    //Accion para el boton de regresar al menu
     @FXML
     void volverAlMenu(ActionEvent event) {
         Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageActual.close();
     }
 
+    // Inicializa los componentes de la vista
     @FXML
     void initialize() {
         assert btnActualizar != null : "fx:id=\"btnActualizar\" was not injected: check your FXML file 'TablaClasificacion.fxml'.";

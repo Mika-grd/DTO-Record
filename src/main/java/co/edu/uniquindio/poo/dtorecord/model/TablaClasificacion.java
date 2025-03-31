@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class TablaClasificacion {
+    // Atributos de la clase TablaClasificacion
     private final List<String> nombres;
     private final List<Integer> puntos;
 
+    // Constructor de la clase TablaClasificacion
     public TablaClasificacion(List<String> nombres, List<Integer> puntos) {
         this.nombres = nombres;
         this.puntos = puntos;
     }
 
+    // Getters
     public List<String> getNombres() {
         return nombres;
     }
@@ -21,6 +24,7 @@ public class TablaClasificacion {
         return puntos;
     }
 
+    //ToString
     @Override
     public String toString() {
         return "TablaClasificacion{" +

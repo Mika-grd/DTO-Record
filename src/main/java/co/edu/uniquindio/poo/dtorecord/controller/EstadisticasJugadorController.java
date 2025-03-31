@@ -66,6 +66,7 @@ public class EstadisticasJugadorController {
     private ObservableList<Jugador> listaJugadores;
     private ObservableList<DesempeñoJugador> listaEstadisticas;
 
+    //Actualiza la tabla de estadísticas del jugador seleccionado
     @FXML
     void actualizarAccion(ActionEvent event) {
         Jugador jugadorSeleccionado = comboJugador.getValue();
@@ -74,12 +75,14 @@ public class EstadisticasJugadorController {
         }
     }
 
+    //Cierra la ventana actual
     @FXML
     void atrasAccion(ActionEvent event) {
         Stage stageActual = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stageActual.close();
     }
 
+    // Inicializa los componentes de la vista
     @FXML
     void initialize() {
         // Inicializar listas
