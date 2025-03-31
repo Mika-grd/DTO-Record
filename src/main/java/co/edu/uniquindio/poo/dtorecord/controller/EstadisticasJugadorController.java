@@ -143,6 +143,7 @@ public class EstadisticasJugadorController {
         tablaEstadisticas.setItems(listaEstadisticas);
     }
 
+    //cargar los jugadores para que se vean en las combo box
     private void cargarJugadores() {
         Equipo equipoSeleccionado = comboEquipo.getValue();
         if (equipoSeleccionado != null) {

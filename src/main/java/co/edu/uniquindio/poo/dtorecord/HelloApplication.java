@@ -12,6 +12,7 @@ import java.util.LinkedList;
 
 public class HelloApplication extends Application {
 
+    //cuando se ejecute la aplicacion muestre la aplicacion principal :)
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Principal.fxml"));
