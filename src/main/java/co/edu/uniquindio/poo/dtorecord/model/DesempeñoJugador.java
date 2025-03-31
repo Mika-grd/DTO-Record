@@ -9,7 +9,8 @@ public record DesempeñoJugador(
         int asistencias,
         int minutosJugados,
         int tarjetasAmarillas,
-        int tarjetasRojas
+        int tarjetasRojas,
+        double calificacionPromedio
 ) {
     // Constructor que recibe un objeto Jugador
     public DesempeñoJugador(Jugador jugador) {
@@ -22,7 +23,8 @@ public record DesempeñoJugador(
                 jugador.getAsistencias(),
                 jugador.getMinutosJugados(),
                 jugador.getTarjetasAmarillas(),
-                jugador.getTarjetasRojas()
+                jugador.getTarjetasRojas(),
+                jugador.getCalificacionPromedio()
         );
     }
 }

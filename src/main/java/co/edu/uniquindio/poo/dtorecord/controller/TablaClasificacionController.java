@@ -4,8 +4,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.dtorecord.HelloApplication;
 import co.edu.uniquindio.poo.dtorecord.model.Grupo;
+import co.edu.uniquindio.poo.dtorecord.model.Equipo;
+import co.edu.uniquindio.poo.dtorecord.model.TablaClasificacion;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,10 +17,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import co.edu.uniquindio.poo.dtorecord.model.Equipo;
-import co.edu.uniquindio.poo.dtorecord.model.TablaClasificacion;
-import co.edu.uniquindio.poo.dtorecord.model.DesempeñoEquipo;
 import javafx.stage.Stage;
 
 public class TablaClasificacionController {
@@ -35,27 +34,33 @@ public class TablaClasificacionController {
     private Button btnRegresar;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, String> colNombreEquipo;
+    private TableColumn<Integer, String> colNombreEquipo;
 
     @FXML
-    private TableColumn<DesempeñoEquipo, Integer> colPuntos;
+    private TableColumn<Integer, Integer> colPuntos;
 
     @FXML
-    private TableView<DesempeñoEquipo> tablaClasificacion;
+    private TableView<Integer> tablaClasificacion;
 
-    private ObservableList<DesempeñoEquipo> listaEquipos;
+    private TablaClasificacion tabla; // Se guarda la tabla para acceder a los datos
 
     @FXML
     void actualizarTabla(ActionEvent event) {
         // Obtener la lista de equipos
-        List<Equipo> listaEquipos = Grupo.getInstance().getListaEquipos(); // Ajusta según cómo obtienes los equipos
+        List<Equipo> listaEquipos = Grupo.getInstance().getListaEquipos();
 
         if (listaEquipos != null && !listaEquipos.isEmpty()) {
             // Generar la tabla de clasificación
-            TablaClasificacion tabla = TablaClasificacion.fromEquipos(listaEquipos);
+            tabla = TablaClasificacion.generarDesdeEquipos(listaEquipos);
+
+            // Crear lista con índices (0, 1, 2...) para acceder a los valores
+            ObservableList<Integer> indices = FXCollections.observableArrayList();
+            for (int i = 0; i < tabla.getNombres().size(); i++) {
+                indices.add(i);
+            }
 
             // Refrescar la tabla en la UI
-            tablaClasificacion.setItems(FXCollections.observableArrayList(tabla.getEquipos()));
+            tablaClasificacion.setItems(indices);
         }
     }
 
@@ -73,10 +78,16 @@ public class TablaClasificacionController {
         assert colPuntos != null : "fx:id=\"colPuntos\" was not injected: check your FXML file 'TablaClasificacion.fxml'.";
         assert tablaClasificacion != null : "fx:id=\"tablaClasificacion\" was not injected: check your FXML file 'TablaClasificacion.fxml'.";
 
-        colNombreEquipo.setCellValueFactory(new PropertyValueFactory<>("nombreEquipo"));
-        colPuntos.setCellValueFactory(new PropertyValueFactory<>("puntos"));
+        // Configurar las columnas para acceder a los valores de TablaClasificacion
+        colNombreEquipo.setCellValueFactory(cellData ->
+                new SimpleStringProperty(tabla.getNombres().get(cellData.getValue()))
+        );
+        colPuntos.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(tabla.getPuntos().get(cellData.getValue())).asObject()
+        );
 
-        listaEquipos = FXCollections.observableArrayList();
-        tablaClasificacion.setItems(listaEquipos);
+        // Inicializar la tabla vacía
+        tablaClasificacion.setItems(FXCollections.observableArrayList());
     }
 }
+

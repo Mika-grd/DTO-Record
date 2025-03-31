@@ -61,6 +61,7 @@ public class EstadisticasEquipoController {
     private TableView<DesempeñoEquipo> tablaEstadisticas;
 
     private ObservableList<Equipo> listaEquipos;
+
     private ObservableList<DesempeñoEquipo> listaEstadisticas;
 
     //Action para el boton de actualizar
@@ -94,10 +95,16 @@ public class EstadisticasEquipoController {
         assert comboEquipos != null : "fx:id=\"comboEquipos\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
         assert tablaEstadisticas != null : "fx:id=\"tablaEstadisticas\" was not injected: check your FXML file 'EstadisticasEquipo.fxml'.";
 
-        
+        // Inicializar listas vacías para evitar null
+        listaEquipos = FXCollections.observableArrayList();
+        listaEstadisticas = FXCollections.observableArrayList();
 
+        // Asignar listas a los componentes
         comboEquipos.setItems(listaEquipos);
+        tablaEstadisticas.setItems(listaEstadisticas);
 
+
+        // Configurar columnas de la tabla
         colPartidosJugados.setCellValueFactory(new PropertyValueFactory<>("partidosJugados"));
         colPartidosGanados.setCellValueFactory(new PropertyValueFactory<>("partidosGanados"));
         colPartidosEmpatados.setCellValueFactory(new PropertyValueFactory<>("partidosEmpatados"));
@@ -105,9 +112,6 @@ public class EstadisticasEquipoController {
         colGolesAFavor.setCellValueFactory(new PropertyValueFactory<>("golesAFavor"));
         colGolesEnContra.setCellValueFactory(new PropertyValueFactory<>("golesEnContra"));
         colPuntos.setCellValueFactory(new PropertyValueFactory<>("puntos"));
-
-        listaEstadisticas = FXCollections.observableArrayList();
-        tablaEstadisticas.setItems(listaEstadisticas);
     }
 
     

@@ -25,12 +25,11 @@ public class HelloApplication extends Application {
 
         //Creación de equipos:
 
-        Grupo grupoA = Grupo.getInsance();
+        Grupo grupoA = Grupo.getInstance();
         LinkedList<Equipo> listaEquipos = grupoA.getListaEquipos();
 
-        if (listaEquipos == null) {
-            listaEquipos = new LinkedList<>();
-        }
+
+
 
         Equipo barcelona = new Equipo(new REquipo(1, "FC Barcelona", "Joan Laporta"), "España",
                 new LinkedList<>(), new LinkedList<>(), 0, 0, 0, 0, 0, 0, 0);
@@ -265,6 +264,14 @@ public class HelloApplication extends Application {
         juventus.getListaPartidos().add(partido20);
         bayern.registrarPartido(1, 1);
         juventus.registrarPartido(1, 1);
+
+
+        // Inicializar los dtos
+
+        System.out.println(grupoA.getInstance().getListaEquipos());
+
+        TablaClasificacion tabla = TablaClasificacion.generarDesdeEquipos(grupoA.getInstance().getListaEquipos());
+
 
 
         launch();

@@ -143,8 +143,8 @@ public class Equipo {
         return "Equipo{" +
                 "equipo=" + equipo +
                 ", pais='" + pais + '\'' +
-                ", listaJugadores=" + listaJugadores +
-                ", listaPartidos=" + listaPartidos +
+                ", listaJugadores=" + (listaJugadores != null ? listaJugadores.size() + " jugadores" : "N/A") +
+                ", listaPartidos=" + (listaPartidos != null ? listaPartidos.size() + " partidos" : "N/A") +
                 ", partidosJugados=" + partidosJugados +
                 ", partidosGanados=" + partidosGanados +
                 ", partidosEmpatados=" + partidosEmpatados +

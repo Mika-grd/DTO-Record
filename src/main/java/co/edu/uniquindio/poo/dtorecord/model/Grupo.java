@@ -3,23 +3,21 @@ package co.edu.uniquindio.poo.dtorecord.model;
 import java.util.LinkedList;
 
 public class Grupo {
-        static Grupo instance;
-        int idGrupo;
-        String nombre;
-        LinkedList<Equipo> listaEquipos;
+        private static Grupo instance; // Instancia única del grupo
+        private int idGrupo;
+        private String nombre;
+        private LinkedList<Equipo> listaEquipos;
 
         private Grupo(int idGrupo, String nombre, LinkedList<Equipo> listaEquipos) {
-
-        }
-
-        public static Grupo getInsance(){
-                if (instance == null){
-                        instance = new Grupo(0,"GrupoA",new LinkedList<>());
-                }
-                return instance;
+                this.idGrupo = idGrupo;
+                this.nombre = nombre;
+                this.listaEquipos = listaEquipos != null ? listaEquipos : new LinkedList<>();
         }
 
         public static Grupo getInstance() {
+                if (instance == null) {
+                        instance = new Grupo(0, "GrupoA", new LinkedList<>());
+                }
                 return instance;
         }
 
@@ -48,6 +46,6 @@ public class Grupo {
         }
 
         public void setListaEquipos(LinkedList<Equipo> listaEquipos) {
-                this.listaEquipos = listaEquipos;
+                this.listaEquipos = listaEquipos != null ? listaEquipos : new LinkedList<>();
         }
 }

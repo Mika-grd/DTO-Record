@@ -7,6 +7,8 @@ import co.edu.uniquindio.poo.dtorecord.model.DesempeñoJugador;
 import co.edu.uniquindio.poo.dtorecord.model.Equipo;
 import co.edu.uniquindio.poo.dtorecord.model.Grupo;
 import co.edu.uniquindio.poo.dtorecord.model.Jugador;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,7 +42,7 @@ public class EstadisticasJugadorController {
     private TableColumn<DesempeñoJugador, Integer> colAsistencias;
 
     @FXML
-    private TableColumn<DesempeñoJugador, Integer> colCalificacionPromedio;
+    private TableColumn<DesempeñoJugador, Double> colCalificacionPromedio;
 
     @FXML
     private TableColumn<DesempeñoJugador, Integer> colGoles;
@@ -80,36 +82,59 @@ public class EstadisticasJugadorController {
 
     @FXML
     void initialize() {
-        assert actualizarBoton != null : "fx:id=\"actualizarBoton\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert atrasBoton != null : "fx:id=\"atrasBoton\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colAmarillas != null : "fx:id=\"colAmarillas\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colAsistencias != null : "fx:id=\"colAsistencias\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colCalificacionPromedio != null : "fx:id=\"colCalificacionPromedio\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colGoles != null : "fx:id=\"colGoles\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colMinutosJugados != null : "fx:id=\"colMinutosJugados\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert colRojas != null : "fx:id=\"colRojas\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert comboEquipo != null : "fx:id=\"comboEquipo\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert comboJugador != null : "fx:id=\"comboJugador\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-        assert tablaEstadisticas != null : "fx:id=\"tablaEstadisticas\" was not injected: check your FXML file 'EstadisticasJugador.fxml'.";
-
         // Inicializar listas
         listaEquipos = FXCollections.observableArrayList(Grupo.getInstance().getListaEquipos());
         listaJugadores = FXCollections.observableArrayList();
         listaEstadisticas = FXCollections.observableArrayList();
 
-        // Cargar equipos en el ComboBox
+        // Configurar ComboBox de Equipos
         comboEquipo.setItems(listaEquipos);
-
-        // Configurar cambio de equipo para actualizar jugadores
         comboEquipo.setOnAction(e -> cargarJugadores());
 
+        // Configurar cómo se muestra en el ComboBox
+        comboEquipo.setConverter(new javafx.util.StringConverter<>() {
+            @Override
+            public String toString(Equipo equipo) {
+                return equipo != null ? equipo.getEquipo().nombre() : "";
+            }
+
+            @Override
+            public Equipo fromString(String string) {
+                return null;
+            }
+        });
+
+        comboJugador.setConverter(new javafx.util.StringConverter<>() {
+            @Override
+            public String toString(Jugador jugador) {
+                return jugador != null ? jugador.getRjugador().nombre() : "";
+            }
+
+            @Override
+            public Jugador fromString(String string) {
+                return null;
+            }
+        });
+
         // Configurar columnas de la tabla
-        colGoles.setCellValueFactory(new PropertyValueFactory<>("goles"));
-        colAsistencias.setCellValueFactory(new PropertyValueFactory<>("asistencias"));
-        colMinutosJugados.setCellValueFactory(new PropertyValueFactory<>("minutosJugados"));
-        colAmarillas.setCellValueFactory(new PropertyValueFactory<>("tarjetasAmarillas"));
-        colRojas.setCellValueFactory(new PropertyValueFactory<>("tarjetasRojas"));
-        colCalificacionPromedio.setCellValueFactory(new PropertyValueFactory<>("calificacionPromedio"));
+        colGoles.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().goles()).asObject());
+
+        colAsistencias.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().asistencias()).asObject());
+
+        colMinutosJugados.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().minutosJugados()).asObject());
+
+        colAmarillas.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().tarjetasAmarillas()).asObject());
+
+        colRojas.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().tarjetasRojas()).asObject());
+
+        colCalificacionPromedio.setCellValueFactory(cellData ->
+                new SimpleDoubleProperty(cellData.getValue().calificacionPromedio()).asObject());
+
 
         // Asignar lista vacía a la tabla
         tablaEstadisticas.setItems(listaEstadisticas);
@@ -120,8 +145,8 @@ public class EstadisticasJugadorController {
         if (equipoSeleccionado != null) {
             listaJugadores.setAll(equipoSeleccionado.getListaJugadores());
             comboJugador.setItems(listaJugadores);
+        } else {
+            listaJugadores.clear();
         }
     }
 }
-
-

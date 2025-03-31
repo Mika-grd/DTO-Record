@@ -12,7 +12,7 @@ public class Jugador {
     int minutosJugados;
     int tarjetasAmarillas;
     int tarjetasRojas;
-    float calificacionPromedio;
+    public double calificacionPromedio;
 
     public Jugador(RJugador rjugador, int edad, String posicion, Equipo equipo, int goles, int asistencias, int minutosJugados, int tarjetasAmarillas, int tarjetasRojas, float calificacionPromedio) {
         this.rjugador = rjugador;
@@ -99,7 +99,7 @@ public class Jugador {
         this.tarjetasRojas = tarjetasRojas;
     }
 
-    public float getCalificacionPromedio() {
+    public double getCalificacionPromedio() {
         return calificacionPromedio;
     }
 
@@ -113,7 +113,6 @@ public class Jugador {
                 "rjugador=" + rjugador +
                 ", edad=" + edad +
                 ", posicion='" + posicion + '\'' +
-                ", equipo=" + equipo +
                 ", goles=" + goles +
                 ", asistencias=" + asistencias +
                 ", minutosJugados=" + minutosJugados +
